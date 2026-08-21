@@ -2,10 +2,11 @@
 
 Reeviz is an Autodesk Revit add-in focused on **coordination, management, and auditing workflows**.
 
-Version `0.1.0` is the first public release and currently supports **Autodesk Revit 2024**. Its first production tool is **ProLink**, a link-management workflow for adding and managing Revit links from local storage and Autodesk cloud projects.
+**Current public release:** v0.1.2
 
 ## Compatibility
 
+- Autodesk Revit 2023
 - Autodesk Revit 2024
 - Windows x64
 - .NET Framework 4.8
@@ -14,7 +15,7 @@ Version `0.1.0` is the first public release and currently supports **Autodesk Re
 
 ### Coordination
 
-- **ProLink** — batch link and manage RVT models.
+- **ProLink** — add, organize, inspect, monitor, and manage RVT links from local storage and Autodesk cloud projects.
 
 ### Reeviz
 
@@ -22,36 +23,45 @@ Version `0.1.0` is the first public release and currently supports **Autodesk Re
 
 ## ProLink
 
-ProLink provides one interface for both adding new RVT links and managing links already present in the active Revit model.
+ProLink provides one workspace for preparing new RVT links and managing links already loaded into the active Revit project.
 
-### Logging
+### Add and Link Models
 
-ProLink maintains an in-session log and writes operation logs under:
+- Add local RVT files or browse Autodesk cloud projects through the Autodesk Forma / Docs browser.
+- Review models in a pending queue before linking.
+- Remove pending items before they are linked.
+- Link the full pending queue with **Link Pending**.
+- Choose Overlay or Attachment reference behavior.
+- Choose link placement, including Shared Coordinates, Origin to Origin, Center to Center, and Project Base Point to Project Base Point.
+- If Shared Coordinates are unavailable, ProLink can fall back to **Project Base Point to Project Base Point** and reports the fallback to the user.
+- A dedicated linking-progress window shows the current model, completed and remaining counts, current stage, elapsed time, and approximate Revit transfer activity for cloud links.
+- Linking can be cancelled cooperatively so no additional pending links start after the active Revit load operation returns.
 
-`%APPDATA%\Reeviz\Logs`
+### Manage Existing Links
 
-The log records link operations and relevant Autodesk cloud identity information to assist with coordination and troubleshooting.
+- Review loaded, unloaded, and reload-required RVT links.
+- Edit Reference Type, Type Workset, Instance Workset, Shared Site, and pinned state where applicable.
+- Apply compatible editable values to multiple highlighted links at once.
+- Reload, unload, unload for the current user, duplicate, remove, or purge links.
+- Remove link types that have no remaining instances.
+- Search and filter the link list.
 
-## Appearance
+### Groups
 
-Reeviz includes persistent **Light** and **Dark** themes.
+- Create persistent groups for link instances.
+- Rename groups.
+- Collapse or expand all groups.
+- Temporarily hide groups and restore them with **Show hidden**.
+- Apply supported group-level values across all members.
+- Group headers summarize shared values and show a mixed state when members differ.
 
-The selected appearance is shared across Reeviz windows. Reeviz uses its own blue accent language in Dark mode rather than the green accent used by Neevis.
+### Change Monitoring
 
-
-## Automatic Updates
-
-Reeviz checks published releases from:
-
-`https://github.com/mustafahafaec-spec/Reeviz-Releases`
-
-Users can:
-
-- Check for updates manually from About Reeviz.
-- Enable automatic update checks.
-- Download an available Reeviz ZIP package.
-- Stage the update for installation after Revit closes.
-
+- **Alert Me** can monitor selected links at a configurable interval.
+- **Check Updates** performs an immediate on-demand check.
+- Local RVT links are checked against their acknowledged source state.
+- Autodesk cloud links are checked for newer published model versions.
+- Loaded Revit Cloud Worksharing links can also be checked against their central model state so synchronized changes can be detected without requiring an Autodesk Docs Publish first.
 
 ## Links
 
