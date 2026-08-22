@@ -2,7 +2,7 @@
 
 Reeviz is an Autodesk Revit add-in focused on **coordination, management, and auditing workflows**.
 
-**Current public release:** v0.1.3
+**Current public release:** v0.1.4
 
 ## Compatibility
 
@@ -27,22 +27,31 @@ Reeviz is an Autodesk Revit add-in focused on **coordination, management, and au
 
 ProLink provides one workspace for preparing new RVT links and managing links already loaded into the active Revit project.
 
-### Add and Link Models
+### Add and Apply Pending Models
 
 - Add local RVT files or browse Autodesk cloud projects through the Autodesk Forma / Docs browser.
-- Review models in a pending queue before linking and remove pending items before they are committed.
-- Link the full pending queue with **Link Pending**.
+- Review new links and staged changes in the pending queue before committing them to Revit.
+- Commit new links, Reload From mappings, and Shared Site changes with **Apply Pending**.
 - Choose Overlay or Attachment reference behavior.
 - Choose Shared Coordinates, Origin to Origin, Center to Center, or Project Base Point to Project Base Point placement.
 - For Shared Coordinates links with multiple named sites, **Choose first site for multiple site link** can select the first site automatically and keep the real Revit Shared Site relationship.
 - If Shared Coordinates are unavailable, ProLink can fall back to **Project Base Point to Project Base Point** and reports the fallback.
 - **Suppress Warnings** helps unattended batches continue past suppressible Revit warnings while still reporting failed operations.
-- A dedicated progress window shows the active model, completed and remaining counts, current stage, elapsed time, approximate cloud read activity, and cooperative cancellation.
-- Every batch finishes with a user-facing linking report that can be exported.
+- **Show Report after Applying** controls whether the completion report opens after Apply Pending.
+- Link-setting choices are remembered per Revit project when ProLink closes, reopens, or temporarily closes to execute Apply Pending.
+- A dedicated progress window shows active operations and supports cooperative cancellation.
+
+### Shared Site Management
+
+- The main **Shared Site** column can stage a different named site for an existing link instance.
+- Existing link instances can also be staged as **`<Not Shared>`**.
+- A staged site edit is shown as **Pending(Site Changed)** until Apply Pending runs.
+- When Reload From and Shared Site are both staged for the same link, the row remains **Pending(Reload From)**; ProLink reloads the source first and then applies the requested site.
+- Shared Site edits are handled per instance so different instances of one main link can remain on different named sites.
 
 ### Reload From
 
-- Stage one or multiple existing main links for **Reload From** without changing the Revit model until **Link Pending** runs.
+- Stage one or multiple existing main links for **Reload From** without changing the Revit model until **Apply Pending** runs.
 - Map replacement models from local files or Autodesk Forma in a dedicated Reload From window.
 - Use **Smart Find** against local folders, Autodesk Forma folders, or the current models pool.
 - Search multiple selected folders and their subfolders using exact-name or partial-name matching.
@@ -51,13 +60,16 @@ ProLink provides one workspace for preparing new RVT links and managing links al
 ### Links Metadata Transfer
 
 - **Export Links Metadata** stores loaded link sources and settings in a Reeviz `.reevizlinks` transfer file.
-- **Import Links Metadata** can recreate missing links, stage changed sources as Reload From, or apply settings to an already-matching source.
-- Transfer includes reference type, type workset, instance workset, Shared Site, pinned state, Alert Me state, and multiple instances of the same main link.
-- Exact-source duplicates and self-link attempts are ignored rather than creating duplicate pending operations.
+- **Import Links Metadata** can recreate missing links, restore missing instances, stage changed sources as Reload From, and stage Shared Site differences.
+- Transfer includes Reference Type, Type Workset, Instance Workset, Shared Site, pinned state, Alert Me state, and multiple instances of the same main link.
+- Existing instance identity is matched by **Shared Site first** when repeated instances of the same link type are imported. An instance already on the requested site is preserved instead of being moved unnecessarily.
+- If metadata contains more instances than the active model, ProLink adds the missing instances and restores their corresponding site and metadata. Extra existing model instances are not deleted by import.
+- An existing link is treated as fully matching only when its source and required per-instance Shared Site configuration are already satisfied.
+- Exact-source duplicates and self-link attempts are ignored rather than creating duplicate pending links.
 
 ### Manage Existing Links
 
-- Review loaded, unloaded, pending, reload-required, and staged Reload From links.
+- Review loaded, unloaded, pending, reload-required, staged Reload From, and staged Shared Site changes.
 - Edit Reference Type, Type Workset, Instance Workset, Shared Site, and pinned state where applicable.
 - Apply compatible editable values to multiple highlighted links at once, including normal Shift/Ctrl multi-selection behavior.
 - Reload, unload, unload for the current user, duplicate, remove, or purge links.
