@@ -1,8 +1,11 @@
 # Reeviz
 
-Reeviz is an Autodesk Revit add-in focused on **coordination, management, and auditing workflows**.
+Reeviz is an Autodesk Revit add-in for **model coordination, RVT link management, and working with clash data from Neevis/Navisworks directly inside Revit**.
 
-**Current public release:** v0.1.5
+**Current public release:** v0.1.5  
+**Current Beta release:** v0.2.0-beta.2.0
+
+> Beta features are available for testing and may continue to change before the next stable public release.
 
 ## Compatibility
 
@@ -11,132 +14,125 @@ Reeviz is an Autodesk Revit add-in focused on **coordination, management, and au
 - Autodesk Revit 2025
 - Autodesk Revit 2026
 - Windows x64
-- Revit 2023/2024: .NET Framework 4.8
-- Revit 2025/2026: .NET 8
 
-## Reeviz Ribbon
+## Reeviz Tools
 
-### Coordination
+### ProLink
 
-- **ProLink** — add, organize, inspect, monitor, transfer, reload, and manage RVT links from local storage, Autodesk cloud projects, and Autodesk Desktop Connector.
+**Use ProLink to add, organize, update, and manage RVT links in the current Revit project.**
 
-### Reeviz
+ProLink brings the main Revit linking workflows into one place instead of managing links one by one through multiple Revit dialogs.
 
-- **About Reeviz** — version, licensing, appearance, update controls, bug/suggestion reporting, GitHub Releases, and LinkedIn.
+You can use it to:
 
-## ProLink
+- Add RVT links from **local files**, **Autodesk cloud projects**, or **Autodesk Desktop Connector**.
+- Choose link positioning, including Shared Coordinates, Origin to Origin, Center to Center, and Project Base Point alignment.
+- Set Overlay / Attachment behavior and worksets.
+- Review loaded, unloaded, changed, and pending links.
+- Reload, unload, duplicate, remove, or purge links.
+- Use **Reload From** to replace an existing link with another source.
+- Manage Shared Sites for linked-model instances.
+- Organize links into persistent groups.
+- Export and import link setup using Reeviz link metadata files.
+- Use **Smart Find** to locate replacement models across supported sources.
+- Monitor supported local/cloud links for newer versions with **Alert Me** and **Check Updates**.
 
-ProLink provides one workspace for preparing new RVT links and managing links already loaded into the active Revit project.
+**Use ProLink when:** you are setting up a coordinated Revit model, maintaining many linked models, replacing links, or transferring link configurations between projects.
 
-### Add and Apply Pending Models
+---
 
-- Add local RVT files, browse Autodesk cloud projects through the Autodesk Forma / Docs browser, or select RVT files from Autodesk Desktop Connector.
-- Review new links and staged changes in the pending queue before committing them to Revit.
-- Commit new links, Reload From mappings, and Shared Site changes with **Apply Pending**.
-- Choose Overlay or Attachment reference behavior.
-- Choose Shared Coordinates, Origin to Origin, Center to Center, or Project Base Point to Project Base Point placement.
-- For Shared Coordinates links with multiple named sites, **Choose first site for multiple site link** can select the first site automatically and keep the real Revit Shared Site relationship.
-- If Shared Coordinates are unavailable, ProLink can fall back to **Project Base Point to Project Base Point** and reports the fallback.
-- **Suppress Warnings** helps unattended batches continue past suppressible Revit warnings while still reporting failed operations.
-- **Show Report after Applying** controls whether the completion report opens after Apply Pending.
-- **Show Last Report** reopens the latest Apply Pending report from the current Revit session.
-- Link-setting choices are remembered per Revit project when ProLink closes, reopens, or temporarily closes to execute Apply Pending.
-- A dedicated progress window shows active operations, can be minimized, and supports cooperative cancellation.
+### Analyzer [BETA]
 
-### Linking Methods
+**Use Analyzer to review Neevis clash-coordination data directly inside Revit.**
 
-The main ProLink pane includes a **Linking Method** column so the source type of each link is clear:
+Analyzer reads the Neevis Workspace associated with the coordination model and presents the clash information in Revit without requiring you to manually inspect the Navisworks clash tree.
 
-- **Local** — normal local or network file linking.
-- **Cloud** — Autodesk cloud/Revit Cloud Worksharing models identified by their cloud model identity.
-- **Desktop Connector** — files selected from the user's Autodesk Desktop Connector workspace.
+Analyzer includes:
 
-Desktop Connector browsing is limited to the connected Autodesk workspace and projects available there. ProLink does not open the Desktop Connector browser when the connector is not installed, not running, or its workspace is unavailable.
+- **Clash Summary** — overview of True Clashes, Reviewed, and Approved clashes by Workspace group.
+- **Clashes Table** — detailed group/item clash counts.
+- **Clashes Matrix** — matrix view of clashes between Workspace Items/Search Sets.
+- **Priority Items** — visual priority-based clash overview.
+- **Clashes List** — individual clashes related to the current Revit model.
+- **Workspace** — review the loaded Workspace groups/models used by Analyzer.
 
-### Autodesk Desktop Connector
+From Analyzer you can also:
 
-- Use **Desktop Connector** from **New Link** to browse RVT files from the connected Autodesk Docs/Forma workspace.
-- Use Desktop Connector in **Reload From** to replace an existing link from the same connected workspace workflow.
-- **Smart Find** includes a Desktop Connector source for recursive matching inside selected connector folders.
-- ProLink keeps Desktop Connector separate from Revit Cloud Worksharing/Autodesk Forma cloud-model linking.
-- Revit's saved source is read back after linking/reloading so ProLink reports the path Revit actually retains rather than presenting a synthetic local-cache path.
-- Links Metadata export/import preserves Desktop Connector as its own linking method and supports portable Autodesk Docs/Forma identities when available.
+- Filter coordination information to the current Revit model.
+- Review or approve clashes and update comments/assignments where supported by the loaded Workspace.
+- Filter clashes using selected Revit elements.
+- Hide unselected clashes and restore the full list.
+- Inspect Item A / Item B element, model, and ID information.
+- Copy individual table values.
+- Customize visible Clash List columns and export the current list to Excel.
+- Create coordination views for individual clashes.
+- Limit how many Reeviz clash views are retained.
+- Jump from Summary/Table/Matrix/Priority selections directly to the matching Clashes List.
+- Configure clash appearance colors for Item A, Item B, and non-clashing model content.
+- Reset Analyzer-applied view changes with **Reset View**.
 
-### Autodesk Forma / Docs Browser
+**Use Analyzer when:** you are resolving coordination issues in Revit and need to understand which clashes affect the current model, inspect the involved elements, or update clash information without switching constantly between Revit and Navisworks.
 
-- Browse Autodesk cloud projects and folders for Revit cloud models.
-- Only models with authoritative Revit cloud Project GUID and Model GUID identity are offered as cloud-link candidates; ordinary uploaded `.rvt` files are not treated as cloud models merely because of their extension.
-- Search models in the selected folder and its subfolders with an explicit Search action.
-- Smart Find can search multiple selected cloud folders recursively.
-- Selected cloud models remain available for normal linking and Reload From workflows.
+---
 
-### Shared Site Management
+### Neevis Portal [BETA]
 
-- The main **Shared Site** column can stage a different named site for an existing link instance.
-- Existing link instances can also be staged as **`<Not Shared>`**.
-- A staged site edit is shown as **Pending(Site Changed)** until Apply Pending runs.
-- When Reload From and Shared Site are both staged for the same link, the row remains **Pending(Reload From)**; ProLink reloads the source first and then applies the requested site.
-- Shared Site edits are handled per instance so different instances of one main link can remain on different named sites.
-- Pinned instances are handled safely during Shared Site changes and restored to their requested pinned state afterward.
+**Use Neevis Portal to bring the relevant part of a Navisworks federation into the current Revit view for coordination reference.**
 
-### Reload From
+The Portal works together with **Reeviz Portal** in Neevis/Navisworks.
 
-- Stage one or multiple existing main links for **Reload From** without changing the Revit model until **Apply Pending** runs.
-- Map replacement models from local files, Autodesk Forma, or Autodesk Desktop Connector in the dedicated Reload From workflow.
-- Use **Smart Find** against local folders, Autodesk Forma folders, Desktop Connector folders, or the current models pool.
-- Search selected folders and their subfolders using exact-name or partial-name matching.
-- Successful Reload From operations finish loaded and apply transferred link/instance metadata where applicable.
+Typical workflow:
 
-### Links Metadata Transfer
+1. Open a Revit 3D view and define the required Section Box.
+2. Open **Neevis Portal**.
+3. Click **Refresh** to send the current Revit scope to Neevis.
+4. Review the Navisworks source files found in that area.
+5. Click **Transfer/Update Geometry** to bring the returned coordination geometry into Revit.
+6. Use **Clear Portal** when the temporary coordination geometry is no longer required.
 
-- **Export Links Metadata** stores loaded link sources and settings in a Reeviz `.reevizlinks` transfer file.
-- **Import Links Metadata** can recreate missing links, restore missing instances, stage changed sources as Reload From, and stage Shared Site differences.
-- Transfer includes Linking Method/source identity, Position, Reference Type, Type Workset, Instance Workset, Shared Site, pinned state, both Alert Me modes, group membership, group order, and multiple instances of the same main link.
-- Imported Position and Reference Type come from the metadata rather than the current Add/Change Links controls.
-- If an imported user workset does not exist in the destination model, ProLink attempts to create it; when that is not possible, it falls back to an available destination user workset and continues instead of failing the whole import.
-- Existing instance identity is matched by **Shared Site first** when repeated instances of the same link type are imported. An instance already on the requested site is preserved instead of being moved unnecessarily.
-- If metadata contains more instances than the active model, ProLink adds the missing instances and restores their corresponding site and metadata. Extra existing model instances are not deleted by import.
-- Exact-source duplicates and self-link attempts are ignored rather than creating duplicate pending links.
-- Desktop Connector metadata remains Desktop Connector on import instead of being converted into a Local link.
+Portal controls include:
 
-### Manage Existing Links
+- Show/hide individual Navisworks source files.
+- Randomize source colors.
+- **Keep Original Colors** from Navisworks.
+- Re-transfer/update geometry without intentionally stacking duplicate Portal geometry.
+- Progress feedback during geometry transfer.
+- Automatic exclusion of the current Revit model from the returned source geometry.
 
-- Review loaded, unloaded, pending, reload-required, staged Reload From, and staged Shared Site changes.
-- Review each link's **Linking Method** before its Path.
-- Edit Reference Type, Type Workset behavior, Instance Workset, Shared Site, and pinned state where applicable.
-- Apply compatible editable values to multiple highlighted links at once, including normal Shift/Ctrl multi-selection behavior.
-- Reload, unload, unload for the current user, duplicate, remove, or purge links.
-- Remove link types that have no remaining instances.
-- Search and filter the link list.
-- Right-click an errored row and choose **Show Error** to inspect its recorded diagnostic message.
+In workshared Revit models, managed Portal geometry uses the temporary **Reeviz_Temp** workset. Clearing the Portal removes its managed geometry and cleans up the temporary workset when it is safe to do so.
 
-### Groups
+Closing the Portal also clears the active Portal session.
 
-- Create persistent groups for link instances.
-- Reorder groups with **Move Group Up** and **Move Group Down**; the custom order persists per Revit project.
-- Links Metadata carries group membership and group order so arrangements can be restored with the link metadata.
-- Standalone group transfer uses the Reeviz `.reevizgroups` format.
-- Rename groups, collapse or expand all groups, and temporarily hide groups.
-- Hidden groups remain hidden after ProLink is reopened until explicitly shown again.
-- Disable grouping temporarily without deleting group assignments.
-- Group headers summarize shared values, show mixed states when members differ, and support aggregate editing.
-- Group headers use persistent user-adjustable colors and a hatched visual treatment for quick identification.
+**Use Neevis Portal when:** you need surrounding Navisworks coordination geometry visible in Revit to understand a clash or spatial condition without permanently importing the federation into the project.
 
-### Change Monitoring
+---
 
-- **Alert Me** has separate **On Publish** and **On Sync** options for supported cloud links.
-- Enabling **On Sync** also enables **On Publish** so synchronized-model monitoring does not omit published updates.
-- **On Publish** watches for newer published Autodesk cloud model versions.
-- **On Sync** uses the live Revit Cloud Worksharing state when it is available to the signed-in user and model; unavailable/denied live access keeps the sync-only option disabled rather than reporting an unknown state as a change.
-- Local RVT links are checked against their acknowledged source state.
-- **Check Updates** performs an immediate on-demand check.
-- Alert popups can reopen ProLink with **Show**.
+### About Reeviz
 
-## Updates and Feedback
+Use **About Reeviz** to:
 
-- Reeviz can notify you when a newer public release is available; update notifications can be enabled or disabled independently from Auto Update.
-- The update prompt provides **Update Now**, **Later**, and **Stop Notification** actions.
-- **Report Bug / Suggestion** in About Reeviz can submit feedback with an optional image attachment.
+- Check the installed Reeviz version.
+- Manage Reeviz appearance/preferences.
+- Review update options.
+- Submit a bug report or suggestion.
+- Open the Reeviz GitHub Releases page.
+
+## Recommended Workflow
+
+For a typical coordination project:
+
+1. Use **ProLink** to prepare and maintain the Revit link setup.
+2. Load the applicable Neevis Workspace and use **Analyzer** to review clashes affecting the Revit model.
+3. Use **Neevis Portal** when you need Navisworks federation geometry visible around a specific Revit Section Box.
+4. Resolve the issue in Revit and update the coordination information through Analyzer/Neevis as required by the project workflow.
+
+## Release Status
+
+- **ProLink** — established Reeviz link-management tool.
+- **Analyzer** — BETA.
+- **Neevis Portal** — BETA.
+
+Beta tools are intended for active testing. Keep normal project backups and report reproducible issues with the relevant Reeviz session information where possible.
 
 ## Links
 
