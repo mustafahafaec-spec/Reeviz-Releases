@@ -3,7 +3,7 @@
 Reeviz is an Autodesk Revit add-in for **model coordination, RVT link management, and working with clash data from Neevis/Navisworks directly inside Revit**.
 
 **Current public release:** v0.1.5  
-**Current Beta release:** v0.2.0-beta.2.0
+**Current Beta release:** v0.2.0-beta.3.0
 
 > Beta features are available for testing and may continue to change before the next stable public release.
 
@@ -75,19 +75,19 @@ From Analyzer you can also:
 
 ---
 
-### Neevis Portal [BETA]
+### Portal [BETA]
 
-**Use Neevis Portal to bring the relevant part of a Navisworks federation into the current Revit view for coordination reference.**
+**Use Portal to bring the relevant part of a Navisworks federation into the current Revit view for coordination reference.**
 
-The Portal works together with **Reeviz Portal** in Neevis/Navisworks.
+The Blue Portal in Reeviz works together with the Orange Portal in Neevis/Navisworks.
 
 Typical workflow:
 
 1. Open a Revit 3D view and define the required Section Box.
-2. Open **Neevis Portal**.
+2. Open **Portal**.
 3. Click **Refresh** to send the current Revit scope to Neevis.
 4. Review the Navisworks source files found in that area.
-5. Click **Transfer/Update Geometry** to bring the returned coordination geometry into Revit.
+5. Click **Transfer/Update** to bring the returned coordination geometry into Revit.
 6. Use **Clear Portal** when the temporary coordination geometry is no longer required.
 
 Portal controls include:
@@ -103,7 +103,7 @@ In workshared Revit models, managed Portal geometry uses the temporary **Reeviz_
 
 Closing the Portal also clears the active Portal session.
 
-**Use Neevis Portal when:** you need surrounding Navisworks coordination geometry visible in Revit to understand a clash or spatial condition without permanently importing the federation into the project.
+**Use Portal when:** you need surrounding Navisworks coordination geometry visible in Revit to understand a clash or spatial condition without permanently importing the federation into the project.
 
 ---
 
@@ -123,14 +123,14 @@ For a typical coordination project:
 
 1. Use **ProLink** to prepare and maintain the Revit link setup.
 2. Load the applicable Neevis Workspace and use **Analyzer** to review clashes affecting the Revit model.
-3. Use **Neevis Portal** when you need Navisworks federation geometry visible around a specific Revit Section Box.
+3. Use **Portal** when you need Navisworks federation geometry visible around a specific Revit Section Box.
 4. Resolve the issue in Revit and update the coordination information through Analyzer/Neevis as required by the project workflow.
 
 ## Release Status
 
 - **ProLink** — established Reeviz link-management tool.
 - **Analyzer** — BETA.
-- **Neevis Portal** — BETA.
+- **Portal** — BETA.
 
 Beta tools are intended for active testing. Keep normal project backups and report reproducible issues with the relevant Reeviz session information where possible.
 
