@@ -1,8 +1,8 @@
-# Reeviz v0.2.0
+# Reeviz v0.2.1
 
 Reeviz is an Autodesk Revit add-in for **model coordination, RVT link management, and working with clash data from Neevis/Navisworks directly inside Revit**.
 
-**Current public release:** v0.2.0
+**Current public release:** v0.2.1
 
 ## Compatibility
 
@@ -54,7 +54,11 @@ NWCGo supports:
 - Optional reference-model reload/mimic workflows for 3D views, templates and scope boxes.
 - Per-row or bulk **Build Name** rules, custom NWC names, copy/paste settings and multi-row editing.
 - Fault-tolerant batch processing that logs recoverable reference, worksharing, view-preparation and NWC-export errors while continuing with remaining models/exports.
-- Optional detailed process logs in the selected export folder.
+- Optional detailed process logs in the selected export folder, including a batch summary and total process time for each model group.
+- Multi-row editing for Use, View Template and Scope Box, plus model-group ordering with Up/Down and drag-and-drop.
+- An optional **Keep the models Opened** mode for workflows where reopening the same targets would be more expensive than the additional memory use.
+- A compact batch-progress view with elapsed time and expandable process details, while the main NWCGo window can still be minimized during processing.
+- Ignore Links / workset preparation that opens lightweight sessions first, excludes RVT links from export, verifies required host worksets and view visibility, and keeps the selected Scope Box authoritative for the final NWC extent.
 
 **Use NWCGo when:** you need repeatable NWC exports from many Revit models/views without manually opening and configuring each model one by one.
 
@@ -170,3 +174,4 @@ Beta tools are intended for active testing. Keep normal project backups and repo
 ## Copyright
 
 Copyright © 2026 Mustafa Hesham. All rights reserved.
+****
