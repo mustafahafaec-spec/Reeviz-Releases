@@ -1,8 +1,8 @@
-# Reeviz v0.2.1
+# Reeviz v0.3.0
 
 Reeviz is an Autodesk Revit add-in for **model coordination, RVT link management, and working with clash data from Neevis/Navisworks directly inside Revit**.
 
-**Current public release:** v0.2.1
+**Current public release:** v0.3.0
 
 ## Compatibility
 
@@ -56,8 +56,11 @@ NWCGo supports:
 - Fault-tolerant batch processing that logs recoverable reference, worksharing, view-preparation and NWC-export errors while continuing with remaining models/exports.
 - Optional detailed process logs in the selected export folder, including a batch summary and total process time for each model group.
 - Multi-row editing for Use, View Template and Scope Box, plus model-group ordering with Up/Down and drag-and-drop.
+- **By NWC** profile editing with persistent NWC groups/order, group sorting, per-group row reordering, checked-NWC counts and header value filters.
+- Excel round-trip editing for NWC rows, including protected identity columns, formatted editable fields, list validation and automatic Explorer reveal after export.
+- **Schedule Task** for named Once or Repeated unattended exports, per-task NWC/group assignment, assignment-change alerts, Revit-version-wide task history and accessible scheduled-run logs.
 - An optional **Keep the models Opened** mode for workflows where reopening the same targets would be more expensive than the additional memory use.
-- A compact batch-progress view with elapsed time and expandable process details, while the main NWCGo window can still be minimized during processing.
+- A compact batch-progress view with elapsed time and expandable process details. The main NWCGo window is automatically hidden for the full export process and returns after an interactive run finishes.
 - Ignore Links / workset preparation that opens lightweight sessions first, excludes RVT links from export, verifies required host worksets and view visibility, and keeps the selected Scope Box authoritative for the final NWC extent.
 
 **Use NWCGo when:** you need repeatable NWC exports from many Revit models/views without manually opening and configuring each model one by one.
@@ -143,9 +146,9 @@ Use **About Reeviz** to:
 - Submit a bug report or suggestion.
 - Open the Reeviz GitHub Releases page.
 
-### License change in v0.2.0
+### Licensing
 
-When Public v0.2.0 or a later Public release first validates an existing **perpetual** Reeviz license, that entitlement is converted locally to a **90-day validity period**. The 90-day period starts with the first Revit session after the Public update is installed and remains tied to that license ID and machine; later Reeviz updates do not restart the period. Existing RSA-signed license certificates are preserved and the local conversion deadline is protected separately.
+Public Reeviz builds support **internet activation** and **manual activation** using the Machine Code shown in the Reeviz activation window. Reeviz also provides the established **7-day free trial** and local deactivation workflow. Legacy activation records that are no longer compatible must be replaced using one of the current activation methods.
 
 ## Recommended Workflow
 
@@ -174,4 +177,3 @@ Beta tools are intended for active testing. Keep normal project backups and repo
 ## Copyright
 
 Copyright © 2026 Mustafa Hesham. All rights reserved.
-****
