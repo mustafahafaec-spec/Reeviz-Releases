@@ -1,8 +1,8 @@
-# Reeviz v0.3.0
+﻿# Reeviz v0.3.1
 
 Reeviz is an Autodesk Revit add-in for **model coordination, RVT link management, and working with clash data from Neevis/Navisworks directly inside Revit**.
 
-**Current public release:** v0.3.0
+**Current public release:** v0.3.1
 
 ## Compatibility
 
@@ -13,6 +13,20 @@ Reeviz is an Autodesk Revit add-in for **model coordination, RVT link management
 - Autodesk Revit 2025
 - Autodesk Revit 2026
 - Windows x64
+
+**Compatibility note:** Reeviz v0.3.1 includes the .NET 10 source-target correction required for the Revit 2026.5 managed API generation. Revit 2025.5 also moved to the .NET 10 API generation, but the Revit 2025 project in v0.3.1 remains on its .NET 8 target; dedicated Revit 2025.5 compatibility is therefore not claimed for this release.
+
+## What's New in v0.3.1
+
+- Expanded **About Reeviz → License Information** with validated license number/name, edition, expiry/remaining days, optional licensed person/organization details, Machine Code and enabled features.
+- Added **Export Usage Statistics** for locally stored aggregate Reeviz usage information. The export is user-initiated; v0.3.1 does not add a public telemetry-upload endpoint.
+- Added installer **Terms and Privacy acknowledgement** covering licensing/machine identification, update/licensing checks and local aggregate usage statistics.
+- Strengthened signed-license validation while preserving the existing internet activation, manual activation, 7-day trial, renewal, revocation and local deactivation workflows.
+- Updated the Revit 2026 target for the .NET 10 runtime generation used by Revit 2026.5.
+- Corrected TestVersion packaging so current tester builds prepare the matching version-specific Inno Setup source automatically and use normal activation/licensing enforcement.
+- Added a version-correct v0.3.1 protected PublicRelease build/installer workflow for Revit 2021-2026.
+
+See `Release Notes/RELEASE_NOTES_v0.3.1.md` for the public release summary.
 
 ## Reeviz Tools
 
@@ -39,7 +53,6 @@ You can use it to:
 **Use ProLink when:** you are setting up a coordinated Revit model, maintaining many linked models, replacing links, or transferring link configurations between projects.
 
 ---
-
 
 ### NWCGo
 
@@ -141,6 +154,8 @@ In workshared Revit models, managed Portal geometry uses a temporary **per-Autod
 Use **About Reeviz** to:
 
 - Check the installed Reeviz version.
+- Review validated license information, including edition, expiry/remaining days, Machine Code and enabled features where available.
+- Export locally stored aggregate usage statistics.
 - Manage Reeviz appearance/preferences.
 - Review update options.
 - Submit a bug report or suggestion.
@@ -148,7 +163,9 @@ Use **About Reeviz** to:
 
 ### Licensing
 
-Public Reeviz builds support **internet activation** and **manual activation** using the Machine Code shown in the Reeviz activation window. Reeviz also provides the established **7-day free trial** and local deactivation workflow. Legacy activation records that are no longer compatible must be replaced using one of the current activation methods.
+Public Reeviz builds support **internet activation** and **manual activation** using the Machine Code shown in the Reeviz activation window. Reeviz also provides the established **7-day free trial** and local deactivation workflow. Current activation is validated against signed license data, and revoked/invalid activation state is handled through the normal activation flow. Legacy activation records that are no longer compatible must be replaced using one of the current activation methods.
+
+Reeviz v0.3.1 stores aggregate usage statistics locally for product-usage review/export. This public release does not add an automatic public telemetry-upload endpoint. The installer presents the Reeviz Terms and Privacy acknowledgement before installation continues.
 
 ## Recommended Workflow
 
