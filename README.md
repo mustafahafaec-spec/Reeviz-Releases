@@ -1,8 +1,8 @@
-﻿# Reeviz v0.3.2
+﻿# Reeviz v0.3.3
 
 Reeviz is an Autodesk Revit add-in for **model coordination, RVT link management, NWC export workflows, and working with Neevis/Navisworks clash data directly inside Revit**.
 
-**Current public release:** v0.3.2
+**Release source version:** v0.3.3
 
 ## Compatibility
 
@@ -14,17 +14,20 @@ Reeviz is an Autodesk Revit add-in for **model coordination, RVT link management
 - Autodesk Revit 2026
 - Windows x64
 
-**Compatibility note:** Reeviz v0.3.2 retains the .NET 10 source-target correction required for the Revit 2026.5 managed API generation. Revit 2025.5 also moved to the .NET 10 API generation, but the Revit 2025 project remains on its .NET 8 target; dedicated Revit 2025.5 compatibility is therefore not claimed for this release.
+**Compatibility note:** Reeviz v0.3.3 retains the .NET 10 source-target correction required for the Revit 2026.5 managed API generation. Revit 2025.5 also moved to the .NET 10 API generation, but the Revit 2025 project remains on its .NET 8 target; dedicated Revit 2025.5 compatibility is therefore not claimed for this release.
 
-## What's New in v0.3.2
+## What's New in v0.3.3
 
-- Updated Reeviz licensing while preserving the existing Machine Code, manual Activation Code workflow, internet activation option, free-trial behavior, and ordinary Activation UI.
-- Added continuous background authorization for licensed use, including limited temporary offline operation when a previously verified authorization remains eligible.
-- Added support for required compatibility updates through the existing Reeviz updater when the installed build is no longer compatible with current licensing requirements.
-- Aggregate product-usage statistics continue to be handled automatically in the background for product improvement. The previous manual **Export Usage Statistics** control is not present.
-- Maintained the v0.3.2 protected PublicRelease build/installer workflow across Revit 2021-2026.
+- **NWCGo:** The Options window is 12% taller, improving room for the settings.
+- **NWCGo:** The Assign Clash Code window includes a search field for finding family and type rows.
+- **NWCGo:** More resilient handling of recoverable warnings and errors during grouped NWC exports, with an option to let users respond to native error dialogs.
+- **NWCGo:** Improvements to retained-model handling after exports and unattended scheduled processing; consult Known Issues for remaining verification.
+- **Portal (BETA):** Continued native Floor creation and geometry-boundary improvements for Permanent Mode. Complex model geometry may still require follow-up.
+- **About Reeviz:** Added dedicated **Report Issue** and **Send Suggestion** actions.
+- **Licensing and updates:** Improved compatibility with the current activation and official Public-release update workflow while preserving the existing Activation UI.
+- **Revit versions:** Maintains separate Revit 2021–2026 package targets.
 
-See `Release Notes/RELEASE_NOTES_v0.3.2.md` for the public release summary.
+See `Release Notes/RELEASE_NOTES_v0.3.3.md` for details and current limitations.
 
 ## Reeviz Tools
 
