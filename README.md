@@ -1,8 +1,8 @@
-﻿# Reeviz v0.3.3
+﻿# Reeviz v0.3.4
 
 Reeviz is an Autodesk Revit add-in for **model coordination, RVT link management, NWC export workflows, and working with Neevis/Navisworks clash data directly inside Revit**.
 
-**Release source version:** v0.3.3
+**Release source version:** v0.3.4
 
 ## Compatibility
 
@@ -14,20 +14,17 @@ Reeviz is an Autodesk Revit add-in for **model coordination, RVT link management
 - Autodesk Revit 2026
 - Windows x64
 
-**Compatibility note:** Reeviz v0.3.3 retains the .NET 10 source-target correction required for the Revit 2026.5 managed API generation. Revit 2025.5 also moved to the .NET 10 API generation, but the Revit 2025 project remains on its .NET 8 target; dedicated Revit 2025.5 compatibility is therefore not claimed for this release.
+**Compatibility note:** Reeviz v0.3.4 retains the .NET 10 source-target correction required for the Revit 2026.5 managed API generation. Revit 2025.5 also moved to the .NET 10 API generation, but the Revit 2025 project remains on its .NET 8 target; dedicated Revit 2025.5 compatibility is therefore not claimed for this release.
 
-## What's New in v0.3.3
+## What's New in v0.3.4
 
-- **NWCGo:** The Options window is 12% taller, improving room for the settings.
-- **NWCGo:** The Assign Clash Code window includes a search field for finding family and type rows.
-- **NWCGo:** More resilient handling of recoverable warnings and errors during grouped NWC exports, with an option to let users respond to native error dialogs.
-- **NWCGo:** Improvements to retained-model handling after exports and unattended scheduled processing; consult Known Issues for remaining verification.
-- **Portal (BETA):** Continued native Floor creation and geometry-boundary improvements for Permanent Mode. Complex model geometry may still require follow-up.
-- **About Reeviz:** Added dedicated **Report Issue** and **Send Suggestion** actions.
-- **Licensing and updates:** Improved compatibility with the current activation and official Public-release update workflow while preserving the existing Activation UI.
-- **Revit versions:** Maintains separate Revit 2021–2026 package targets.
+- **Portal (BETA):** Corrected the window behavior that could make the main Portal interface unexpectedly disappear behind Revit or appear minimized.
+- **Portal (BETA):** The Portal remains associated with its Revit host, can be restored by clicking the Portal ribbon command, and no longer requires an always-on-top pin just to remain accessible while Revit is active.
+- **Portal (BETA):** During Save/Save As/Synchronize with Central, the Portal interface remains open while transient Portal geometry is cleared before model persistence. After the operation, Refresh can safely resume transfers.
+- **Portal:** The Pin control still optionally keeps the window above other applications when explicitly enabled.
+- No changes to NWCGo, ProLink, Analyzer, activation, licensing, or existing settings.
 
-See `Release Notes/RELEASE_NOTES_v0.3.3.md` for details and current limitations.
+See `Release Notes/RELEASE_NOTES_v0.3.4.md` for the release summary and known limitations.
 
 ## Reeviz Tools
 
