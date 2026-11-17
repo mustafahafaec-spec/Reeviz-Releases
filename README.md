@@ -1,8 +1,8 @@
-﻿# Reeviz v0.3.4
+﻿# Reeviz v0.3.5
 
 Reeviz is an Autodesk Revit add-in for **model coordination, RVT link management, NWC export workflows, and working with Neevis/Navisworks clash data directly inside Revit**.
 
-**Release source version:** v0.3.4
+**Release source version:** v0.3.5
 
 ## Compatibility
 
@@ -14,17 +14,16 @@ Reeviz is an Autodesk Revit add-in for **model coordination, RVT link management
 - Autodesk Revit 2026
 - Windows x64
 
-**Compatibility note:** Reeviz v0.3.4 retains the .NET 10 source-target correction required for the Revit 2026.5 managed API generation. Revit 2025.5 also moved to the .NET 10 API generation, but the Revit 2025 project remains on its .NET 8 target; dedicated Revit 2025.5 compatibility is therefore not claimed for this release.
+**Compatibility note:** Reeviz v0.3.5 retains the .NET 10 source-target correction required for the Revit 2026.5 managed API generation. Revit 2025.5 also moved to the .NET 10 API generation, but the Revit 2025 project remains on its .NET 8 target; dedicated Revit 2025.5 compatibility is therefore not claimed for this release.
 
-## What's New in v0.3.4
+## Release highlights in v0.3.5
 
-- **Portal (BETA):** Corrected the window behavior that could make the main Portal interface unexpectedly disappear behind Revit or appear minimized.
-- **Portal (BETA):** The Portal remains associated with its Revit host, can be restored by clicking the Portal ribbon command, and no longer requires an always-on-top pin just to remain accessible while Revit is active.
-- **Portal (BETA):** During Save/Save As/Synchronize with Central, the Portal interface remains open while transient Portal geometry is cleared before model persistence. After the operation, Refresh can safely resume transfers.
-- **Portal:** The Pin control still optionally keeps the window above other applications when explicitly enabled.
-- No changes to NWCGo, ProLink, Analyzer, activation, licensing, or existing settings.
+- **Reeviz ribbon:** Analyzer, Portal, ProLink, NWCGo, and About Reeviz now use a consistent hover-description format: a concise action-oriented summary followed by a longer explanation.
+- **Reeviz ribbon:** Removed developer attribution from the NWCGo hover description. Developer credits remain in About Reeviz.
+- **Portal (BETA):** Retains the current standalone, taskbar-recoverable window with user-controlled Pin/Unpin and one-line model-name display from the latest v0.3.4 maintenance source.
+- **Existing tools:** No changes to tool commands, model data, settings, licensing, or transfer/export behavior.
 
-See `Release Notes/RELEASE_NOTES_v0.3.4.md` for the release summary and known limitations.
+See `Release Notes/RELEASE_NOTES_v0.3.5.md` for the release summary and known limitations.
 
 ## Reeviz Tools
 
